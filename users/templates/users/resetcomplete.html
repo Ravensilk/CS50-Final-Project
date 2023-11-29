@@ -1,0 +1,20 @@
+{% extends 'users/layout.html' %}
+{% load widget_tweaks %}
+
+{% block body %}
+<!-- New Login Form -->
+<div class="container-fluid d-flex">
+    <div class="row container-fluid login-page">
+        <div class="col login-form">
+            <!-- Form inspired by https://uiverse.io/alexruix/tender-badger-50 (slightly edited) -->
+            <div class="uiform-box d-flex flex-column gap-3 p-3">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <span class="loginlogo"><i class="bi bi-mailbox-flag"></i></span>
+                    <span class="uititle">Reset Complete!</span>
+                </div>
+                <span class="uisubtitle text-center p-3">Your password has been successfully changed. You can now <a href="/login">login</a>.</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

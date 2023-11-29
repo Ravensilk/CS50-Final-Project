@@ -1,0 +1,529 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100vw;
+    background-image: url('images/layered-waves-haikei.svg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.errorlist {
+    display: None;
+}
+
+.main-nav {
+    z-index: 99;
+    background-color: #002642;
+    padding-left: 10px;
+    min-height: 47px;
+}
+
+.nav-container {
+    margin-left: 30px;
+}
+
+.login-container {
+    margin-right: 30px;
+}
+
+.main-nav a {
+    color: white !important;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 5px;
+    font-size: 1rem;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.main-nav .logo {
+    width: 70px;
+    height: auto;
+    margin-right: 10px;
+    filter: invert(1);
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.home-page {
+    height: 100%;
+}
+
+.site-title {
+    position: absolute;
+    left: 15%;
+    top: 30%;
+}
+
+.site-title h1 {
+    font-size: 4rem;
+}
+
+.site-title span {
+    font-size: 1.3rem;
+}
+
+.profile {
+    position: absolute;
+    top: calc(0.5rem + 30px + 47px);
+    padding: 0 32px;
+}
+
+#create-div {
+    display: none;
+}
+
+.create-container {
+    position: absolute;
+    top: 40px;
+    left: 265px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px;
+    min-height: 30vh;
+    height: 30vh;
+    width: 300px;
+    background-color: white;
+    z-index: 9999;
+}
+
+.create-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.submit-create {
+    width: 280px;
+
+}
+
+.change-password-form {
+    padding: 50px 0;
+}
+
+.registration-btn {
+    border: 1px solid black;
+    padding: 12px 30px 12px 30px;
+    border-radius: 30px;
+    background-color: #2e67bc;
+    font-weight: bolder;
+    font-size: 1.3rem;
+    box-shadow: 0px 0px 1px;
+    transform: all 2s esase;
+    transition-duration: .3s;
+    color: white;
+  }
+  
+  .registration-btn:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 7px 1px rgb(0, 0, 0);
+    border: 1px solid black;
+  }
+  
+  .registration-btn:active {
+    transform: translateY(10px);
+    box-shadow: 0px 0px 1px;
+  }
+
+  .registration-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -62.5%);
+  }
+
+  .registration-form {
+    display: flex; 
+    justify-content: end;
+  }
+
+  .login-page, .reset-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -62.5%);
+  }
+
+  .login-form, .reset-form {
+    display: flex; 
+    justify-content: center;
+  }
+
+  .registration-reqs {
+    display: flex; 
+    justify-content: start;
+  }
+
+  .front-pic {
+    position: absolute;
+    top: 25%;
+    right: 15%;
+    mix-blend-mode: multiply;
+  }
+    
+  .login-page, .registration-page, .reset-page {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+/*
+Uiverse.io Form
+*/
+
+.loginlogo {
+    font-size: 45px;
+    margin: 0;
+}
+
+.uiform-box {
+    width: 30vw;
+    max-width: 30vw;
+    background: #f1f7fe;
+    overflow: hidden;
+    border-radius: 16px;
+    color: #010101;
+}
+
+.uiregform-box {
+    width: 30vw;
+    max-width: 30vw;
+    background: #f1f7fe;
+    overflow: hidden;
+    border-radius: 16px;
+    color: #010101;
+    display: grid;
+    place-items: center;
+}
+
+.uiform {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px 24px;
+    gap: 16px;
+    text-align: center;
+    align-items: center;
+}
+
+/*Form text*/
+.uititle {
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+  
+.uisubtitle {
+    font-size: 1rem;
+    color: #666;
+}
+  
+/*Inputs box*/
+.uiform-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f1f7fe;
+    margin: .5rem 0 .5rem;
+    width: 100%;
+    align-items: center;
+}
+  
+.uiinput {
+    background-color: #fff;
+    border: 0;
+    outline: 0;
+    height: 40px;
+    width: 80%;
+    border: 1px solid #eee;
+    font-size: .9rem;
+    padding: 8px 15px;
+}
+  
+.uiform-section {
+    text-align: center;
+    padding: 16px 16px 5px 16px;
+    font-size: .85rem;
+    background-color: #e0ecfb;
+    box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+}
+  
+.uiform-section a {
+    font-weight: bold;
+    color: #0066ff;
+    transition: color .3s ease;
+}
+  
+.uiform-section a:hover {
+    color: #005ce6;
+    text-decoration: underline;
+}
+  
+/*Button*/
+.uiform .button-submit, .button-submit {
+    width: 80%;
+    background-color: #0066ff;
+    color: #fff;
+    border: 0;
+    border-radius: 24px;
+    padding: 10px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+  
+.uiform .button-submit:hover, .button-submit:hover {
+    background-color: #005ce6;
+} 
+
+.change-password-form .button-submit {
+    width: 50%;
+    margin-top: 15px;
+}
+
+.change-password-form {
+    width: 30vw;
+}
+
+.registration-guide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 32px 24px 24px;
+}
+  
+.logout-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    color: rgb(255,255,255);
+}
+
+@media only screen and (max-width: 992px) {
+
+    .front-pic {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.05;
+        width: 120%;
+        z-index: -1;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    .site-title {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        padding: 20px;
+        gap: 5px;
+    }
+
+    .uiform-box {
+        width: 50vw;
+        max-width: 50vw;
+        background: #f1f7fe;
+        overflow: hidden;
+        border-radius: 16px;
+        color: #010101;
+    }
+    
+    .registration-form {
+        width: 47.5vw;
+        max-width: 47.5vw;
+    }
+
+    .registration-reqs {
+        width: 47.5vw;
+        max-width: 47.5vw;
+    }
+
+    .uiregform-box {
+        width: 47.5vw;
+        max-width: 47.5vw;
+    }
+
+    .login-page, .registration-page, .reset-page {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .registration-page {
+        gap: 0;
+    }
+
+    .change-password-form {
+        width: 50vw;
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: 500px) {
+
+    .mobile-menu {
+        display: block;
+        position: absolute;
+        z-index: 999;
+        top: 47px;
+        left: -50px;
+        height: 100%;
+        background-color: white;
+        width: 0;
+        max-width: 100%;
+        transition: width 0.25s linear, left 0.25s linear;
+        transition-delay: 0s;
+    }
+
+    .mob-menu-items {
+        position: absolute;
+        top: 50%;
+        left: -50px;
+        transform: translate(-50%, calc(-50% - 47px));
+        text-align: center;
+        justify-content: start;
+        transition: left 0.25s linear;
+        transition-delay: 0s;
+    }
+
+    .mob-menu-items ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mob-menu-items li {
+        font-size: 25px;
+        padding: 5px 0;
+        font-weight: bold;
+    }
+
+    .mob-menu-items a {
+        text-decoration: none;
+    }
+
+    .mob-menu-items button {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        color: rgb(13,110,253);
+    }
+
+    .mob-menu-items button:focus {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        color: rgb(13,110,253);
+    }
+
+    .menu-button {
+        position: absolute;
+        top: 3.5px;
+        right: 1.25rem;
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        color: rgb(255, 255, 255);
+        font-size: 1.75rem;
+        z-index: 9999;
+    }
+
+    .content {
+        background-image: url('images/layered-waves-haikei-small.svg');
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        overflow-x: hidden;
+    }
+
+    .front-pic {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.05;
+        width: 120%;
+        z-index: -1;
+    }
+
+    .site-title {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 95%;
+        padding: 20px;
+        gap: 5px;
+    }
+
+    .site-title h1 {
+        font-size: 3.3rem;
+    }
+
+    .site-title span {
+        font-size: 20px;
+    }
+
+    .registration-btn {
+        font-size: 20px;
+    }
+
+    .uiform-box {
+        width: 90vw;
+        max-width: 90vw;
+    }
+    
+    .uiregform-box {
+        display: none;
+    }
+
+    .registration-form {
+        width: 90vw;
+        max-width: 90vw;
+    }
+
+    .change-password-form {
+        width: 90vw;
+    }
+
+}

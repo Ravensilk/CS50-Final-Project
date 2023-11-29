@@ -1,0 +1,21 @@
+{% extends 'users/layout.html' %}
+
+{% block body %}
+<div class="container-fluid home-page d-flex">
+    <section class="container-fluid landing row p-3">
+        <div class="col d-flex flex-column">
+            <div class="d-flex flex-column site-title">
+                <h1>Welcome to <strong>NeatTasks</strong></h1>
+                <span>A capstone project made for CS50Web, inspired by Trello.</span>
+                <span class="fw-bold">Built on Python, Django, PostgreSQL and Javascript.</span>
+                <span>Easily collaborate on projects, keep tabs on due dates and stay updated.</span>
+                <div class="py-3"><a href="/register"><button class="registration-btn">Register Now</button></a></div>
+                <span style="font-size: 10px;">*For educational purposes only. Not affiliated with Trello / Atlassian.</span>
+            </div>
+        </div>
+        <div class="col d-flex">
+            <img src="/static/users/images/collaborate.png" class="rounded front-pic" alt="">
+        </div>
+    </section>
+</div>
+{% endblock %}

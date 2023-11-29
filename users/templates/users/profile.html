@@ -1,0 +1,49 @@
+{% extends 'users/layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block body %}
+    
+<div class="container-fluid profile">
+    <div>
+        <h4>Hey {{ request.user.username | title}}!</h4>
+        <span class="uisubtitle">Welcome to your profile, here you can update your password.</span>
+    </div>
+
+    <div class="change-password-form">
+        <h4>Change your password</h4>
+        {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{% if message.tags %}{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% endif %}{% endif %} alert-dismissible fade show my-0 my-3 w-75" role="alert">
+                    <span>{{ message }}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.old_password|add_class:"uiinput form-control my-1"|attr:"placeholder:Old Password"}}
+            <hr class="w-75 opacity-25">
+            {{ form.new_password1|add_class:"uiinput form-control my-1"|attr:"placeholder:New Password"}}
+            {{ form.new_password2|add_class:"uiinput form-control my-1"|attr:"placeholder:Repeat New Password"}}
+            {% if form.errors %}
+                {% for field in form %}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show my-0 mt-2 w-75" role="alert">
+                                <span>{{ error }}</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            <div><button class="button-submit">Change Password</button></div>
+        </form>
+    </div>
+
+    <div class="delete-account-form w-50">
+    
+    </div>
+</div>
+{% endblock %}

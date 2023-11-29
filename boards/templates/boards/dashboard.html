@@ -1,0 +1,90 @@
+{% extends 'boards/layout.html' %}
+{% load static %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block body %}
+<section class="main dashboard-bg">
+    <div class="container-fluid mt-2">
+    {% if messages or form.errors %}
+        <div class="messages">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{% if message.tags %}{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% endif %}{% endif %} alert-dismissible fade show" role="alert">
+                        <span>{{ message }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if form.errors %}
+                {% for field in form %}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <span>{{ error }}</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endif %}
+    <section class="welcome pb-1">
+            <h2>Welcome to NeatTasks!</h2>
+            <span>This is a project for CS50Web that was made to help users organize tasks and collaborate on projects easily. <strong>This website is very easy to use!</strong></span>
+            <br><span>Just follow the steps below and you're on your way to an organized work!</span><br>
+            <div class="ms-3 ps-3 my-3 d-flex flex-column">
+                <span><i class="bi bi-1-circle"></i> <strong>Create a board</strong> where you can make lists and cards by clicking the "Create" button at the top.</span>
+                <span><i class="bi bi-2-circle"></i> Once you have created a board you will be redirected to the board, you can now make a list which is a container of cards. Just press <strong>"Add a list"</strong>. </span>
+                <span><i class="bi bi-2-circle"></i> Lastly, you need to press <strong>"Add a card"</strong> to add a card in your list. After that you can edit its title, description, due date and much more!</span>
+            </div>
+            <span>That's it! We hope you find NeatTasks easy to use.</span>
+    </section>
+    <section class="boards pb-3">
+            <h4>Created boards</h4>
+            <div class="board-list d-flex text-center">
+                <div class="created-boards d-flex flex-row gap-3 pb-2 text-center w-100 overflow-x-auto">
+                    {% for board in created_boards %}
+                    <a class="dash-link" href="{% url 'render-board' board.slug %}">
+                        <div class="d-flex flex-column justify-content-center align-items-center board-card border border-secondary-subtle rounded board-placeholder" {% if board.background_image %}style="background-image: url(/static/boards/images/{{board.background_image}});"{% endif %}>
+                            {% if board.background_image %}
+                                <div class="board-placeholder-overlay rounded"></div>
+                            {% endif %}
+                            <span class="board-placeholder-title"><strong>{{ board.title|title }} {% if request.user in board.admins %} add this {% endif %}</strong></span>
+                        </div>
+                    </a>
+                    {% empty %}
+                    <h6 class="text-danger">You have not created any boards yet!</h6>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <h4>Joined boards</h4>
+            <div class="board-list d-flex flex-column pb-3">
+                <div class="joined-boards d-flex flex-row gap-3 pb-2 text-center w-100 overflow-x-auto">
+                    {% for board in joined_boards %}
+                    <a class="dash-link" href="{% url 'render-board' board.slug %}">
+                        <div class="d-flex flex-column justify-content-center align-items-center board-card border border-secondary-subtle rounded board-placeholder" {% if board.background_image %}style="background-image: url(/static/boards/images/{{board.background_image}});" {% endif %}>
+                            {% if board.background_image %}
+                                <div class="board-placeholder-overlay rounded"></div>
+                            {% endif %}
+                            <span class="board-placeholder-title"><strong>{{ board.title|title }} {% if request.user in board.admins.all %} <i class="bi bi-star-fill" style='color: #D9DF14;'></i> {% endif %}</strong></span>
+                        </div>
+                    </a>
+                    {% empty %}
+                    <h6 class="text-danger">You have not joined any boards yet!</h6>
+                    {% endfor %} 
+                </div>
+                {% if joined_boards %}
+                <span class="pb-3"><small>Boards with <i class="bi bi-star-fill" style='color: #D9DF14;'></i> beside their names are administrated by you.</small></span>
+                {% endif %}
+            </div>
+    </section>
+
+    </div>
+</section>
+{% endblock %}
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi consequatur quis sapiente. Reiciendis doloribus aliquam tempora quod itaque magnam eius facilis inventore non voluptatum autem sapiente, dolor dicta quisquam accusantium?

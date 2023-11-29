@@ -1,0 +1,69 @@
+{% extends 'users/layout.html' %}
+{% load widget_tweaks %}
+
+{% block body %}
+<div class="container-fluid d-flex">
+    <div class="row container-fluid registration-page g-0">
+        <div class="col-lg-5 col-md-5 col-12 registration-form">
+            <!-- Form inspired by https://uiverse.io/alexruix/tender-badger-50 (slightly edited) -->
+            <div class="uiform-box">
+                <form action="{% url 'register' %}" method="POST" class="uiform">
+                    <div class="d-flex flex-column">
+                        <span class="loginlogo"><i class="bi bi-person-plus"></i></span>
+                        <span class="uititle">Register</span>
+                    </div>
+                    <span class="uisubtitle">Create a free account with your email.</span>
+                    <div class="uiform-container">
+                        {% csrf_token %}
+                        {{ form.username|add_class:"uiinput form-control my-1"|attr:"placeholder:Username"}}
+                        {{ form.email|add_class:"uiinput form-control my-1"|attr:"placeholder:Email Address"}}
+                        {{ form.password|add_class:"uiinput form-control my-1"|attr:"placeholder:Password"}}
+                        {{ form.confirmpassword|add_class:"uiinput form-control my-1"|attr:"placeholder:Confirm Password"}}
+                    </div>
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{% if message.tags %}{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% endif %}{% endif %} alert-dismissible fade show" role="alert">
+                            <span>{{ message }}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <span>{{ error }}</span>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <button class="button-submit">Register</button>
+                </form>
+                <div class="uiform-section">
+                  <p>Have an account? <a href="/login">Log in</a> </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-0 d-lg-flex d-md-flex d-none registration-reqs">
+            <!-- Form inspired by https://uiverse.io/alexruix/tender-badger-50 (slightly edited) -->
+            <div class="uiregform-box">
+                <div class="registration-guide">
+                    <div class="d-flex flex-column align-items-center">
+                        <span class="uititle">Guidelines</span>
+                        <span class="uisubtitle">To open a new account, you need to:</span>
+                    </div>
+                    <ul class="d-flex flex-column gap-2">
+                        <li>Provide a valid and working email to confirm your account.</li>
+                        <li>Have a strong password which is at least 16 characters long.</li>
+                        <li>Have a strong password with atleast 1 capital, one number and one special character.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

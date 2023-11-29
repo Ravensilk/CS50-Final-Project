@@ -1,0 +1,91 @@
+{% extends 'boards/layout.html' %}
+{% load static %}
+
+{% block scripts %}
+<script src="{% static 'boards/board.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+<section class="main container-fluid d-flex flex-column g-0">
+    <div class="board-nav d-block w-100">
+        <nav class="navbar navbar-expand border-body">
+            <div class="container-fluid">
+                <h3 id="board-title" class="m-0 me-3 text-white" data-slug="{{ board.slug }}">{{ board.title|title }}</h3>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto">
+                        <div class="row d-flex flex-row">
+                            {% if board.visibility == 'Private' %}
+                            <div class="d-lg-block d-md-block d-none"><span class="d-flex align-items-center board-status"><i class="bi bi-eye-slash board-status-img"></i><small>Private Board</small></span></div>
+                            <div class="d-lg-none d-md-none d-block pe-2"><span class="d-flex align-items-center board-status"><i class="bi bi-eye-slash board-status-img"></i></span></div>
+                            {% else %}
+                            <div class="d-lg-block d-md-block d-none"><span class="d-flex align-items-center board-status"><i class="bi bi-eye board-status-img"></i><small>Public Board</small></span></div>
+                            <div class="d-lg-none d-md-none d-block"><span class="d-flex align-items-center board-status"><i class="bi bi-eye board-status-img"></i></span></div>
+                            {% endif %}
+                            {% if board.archived %}
+                            <div class="d-lg-block d-md-block d-none"><span class="d-flex align-items-center board-status"><i class="bi bi-archive board-status-img"></i><small>Archived</small></span></div>
+                            <div class="d-lg-none d-md-none d-block"><span class="d-flex align-items-center board-status"><i class="bi bi-archive board-status-img"></i></span></div>
+                            {% endif %}
+                        </div>
+                    </ul>
+                    <div class="btn-group dropstart">
+                        <button type="button" class="board-settings" data-bs-toggle="dropdown">
+                            <i class="bi bi-gear"></i>
+                        </button>
+                        <ul class="dropdown-menu p-2 py-3 board-menu">
+                            {% if admin %}
+                            <li class='p-1 board-settings-item' id="rename-board-btn"><div class="d-flex justify-content-between"><span>Rename Board</span><i class="bi bi-pencil"></i></div></li>
+                            <hr>
+                            <li class='p-1 board-settings-item'><div class="d-flex justify-content-between invite-button"><span>Invite Members</span><i class="bi bi-person-add"></i></div></li>
+                            <hr>
+                            <li class='p-1 board-settings-item'><div class="d-flex justify-content-between background-button"><span>Background</span><i class="bi bi-image-fill"></i></div></li>
+                            <hr>
+                            <li class='p-1 board-settings-item' id="privacy-btn"><div class="d-flex justify-content-between"><span>Board Privacy</span><i class="bi bi-eye-fill"></i></div></li>
+                            <hr>
+                            {% if not board.archived %}
+                            <li class='p-1 board-settings-item board-archive-button' style='color: red;'><div class="d-flex justify-content-between"><span>Archive Board</span><i class="bi bi-archive"></i></div></li>
+                            {% else %}
+                            <li class='p-1 board-settings-item board-unarchive-button'><div class="d-flex justify-content-between"><span>Unarchive Board</span><i class="bi bi-archive"></i></div></li>
+                            {% endif %}
+                            {% else %}
+                            <li class='p-1 board-settings-item'><div class="d-flex justify-content-between invite-button"><span>Board Members</span><i class="bi bi-people"></i></div></li>
+                            <hr>
+                            <li class='p-1 board-settings-item leave-board-btn' style="color: red;"><div class="d-flex justify-content-between"><span>Leave Board</span><i class="bi bi-box-arrow-right"></i></div></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>  
+        </nav>
+    </div>
+    <div class="container-fluid board-view pt-3 pb-1">
+        {% if messages or form.errors %}
+        <div class="row">
+            <div class="messages">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{% if message.tags %}{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% endif %}{% endif %} alert-dismissible fade show" role="alert">
+                            <span>{{ message }}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <span>{{ error }}</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="list-board row d-flex flex-nowrap gap-2 overflow-x-auto px-3 pb-3">
+        </div>
+</section>
+{% endblock %}

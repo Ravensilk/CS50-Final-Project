@@ -1,0 +1,42 @@
+{% extends 'users/layout.html' %}
+{% load widget_tweaks %}
+
+{% block body %}
+<!-- New Login Form -->
+<div class="container-fluid d-flex">
+    <div class="row container-fluid reset-page g-0">
+        <div class="col reset-form">
+            <!-- Form inspired by https://uiverse.io/alexruix/tender-badger-50 (slightly edited) -->
+            <div class="uiform-box">
+                <form method="POST" class="uiform">
+                    <div class="d-flex flex-column">
+                        <span class="loginlogo"><i class="bi bi-key-fill"></i></span>
+                        <span class="uititle">Reset Your Password</span>
+                        <span class="uisubtitle">Enter the new password that you want to use on the fields below.</span>
+                    </div>
+                    <div class="uiform-container">
+                        {% csrf_token %}
+                        {{ form.new_password1|add_class:"uiinput form-control my-1"|attr:"placeholder:New Password"}}
+                        {{ form.new_password2|add_class:"uiinput form-control my-1"|attr:"placeholder:Confirm New Password"}}
+                    </div>
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{% if message.tags %}{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% endif %}{% endif %} alert-dismissible fade show" role="alert">
+                            <span>{{ message }}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if form.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <span>Your username and password didn't match. Please try again.</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endif %}
+                    <button class="button-submit">Change my password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
