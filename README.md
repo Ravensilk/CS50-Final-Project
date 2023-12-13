@@ -1,5 +1,5 @@
 # NeatTasks - To-do List App - Project for CS50's Web Programmming with Python and Javascript
-Video Demo: https://youtu.be/kvnOgV1Pf5Q
+#### Video Demo: https://youtu.be/kvnOgV1Pf5Q
 #### Description:
 
 This capstone project is for the CS50W course in EDx. It is a to-do list app that is customizable and has more features to be explained at the later part of this document. It's an app made with Python, Django, Django REST Framework, Javascript, HTML and CSS and uses PostgreSQL for it's database managed by Django's ORM. It is greatly responsive and can be accessed using a mobile phone, tablet or PC.
